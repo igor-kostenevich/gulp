@@ -6,17 +6,16 @@ const uglify = require('gulp-uglify');
 const del = require('del');
 const browsersSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
+//const sass = require('gulp-sass');
 const less = require('gulp-less');
 const imagemin = require('gulp-imagemin');
 
 const styleFiles = [
-        './src/css/media.css',
-        './src/css/main.less'
+        './src/css/main.less',
+        './src/css/media.less'
  ]
 
 const scriptsFiles = [
-    './src/js/lib.js',
     './src/js/main.js'
 ]
 
@@ -29,7 +28,7 @@ gulp.task('styles', () => {
     .pipe(concat('style.css'))
     //Автопрефиксы для посл 2 версий браузеров
     .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
+        overrideBrowserslist: ['last 2 versions'],
         cascade: false
     }))
     //Минификация
